@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import Transaction from "../models/Transaction.js";
+import User from "../models/User.js";
 
 export  const StripeWebhooks = async (request, response) => {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -11,7 +12,7 @@ export  const StripeWebhooks = async (request, response) => {
         event = stripe.webhooks.constructEvent(request.body, sig, process.env.
             STRIPE_WEBHOOK_SECRET )
     } catch (error) {
-        return response.status(400).send(`Webhook Error: ${error}`)
+        return response.status(400).send(`Webhook Error: ${error.message}`)
     }
 
     try {
@@ -31,6 +32,10 @@ export  const StripeWebhooks = async (request, response) => {
             
                         // Update credits in user account
                         await User.updateOne({_id: transaction.userId}, {$inc: {credits: transaction.credits }})
+
+                        // Update credit Payment status
+                        transaction.isPaid = true;
+                        await transaction.save();
                 }else{
                     return response.json({received: true, message: "Ignored event: Invalid app"})
                 }

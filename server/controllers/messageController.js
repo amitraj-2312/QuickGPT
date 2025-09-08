@@ -21,7 +21,7 @@ export const textMessageController = async (req, res) => {
         const { chatId, prompt} = req.body
 
         const chat = await Chat.findOne({userId, _id: chatId})
-        Chat.messages.push({role: "user", content:prompt, timestamp:Date.now(),
+        chat.messages.push({role: "user", content:prompt, timestamp:Date.now(),
         isImage: false})
 
     const { choices } = await openai.chat.completions.create({
@@ -57,7 +57,7 @@ export const imageMessageController = async (req, res) => {
        }
        const {prompt, chatId, isPublished} = req.body
        // Find chat
-       const chat = await chat.findOne({userId, _id: chatId})
+       const chat = await Chat.findOne({userId, _id: chatId})
 
        // Push user message
        chat.messages.push({
@@ -68,7 +68,7 @@ export const imageMessageController = async (req, res) => {
 
 
          // Encode the prompt
-         const encodedPrompt = encodedURIComponent(prompt)
+         const encodedPrompt = encodeURIComponent(prompt)
 
          // Construct ImageKit AI generation URL
          const generetedImageUrl = `${process.env.IMAGEKIT_URL_ENDPOINT}/
@@ -83,7 +83,7 @@ export const imageMessageController = async (req, res) => {
         // Upload to Imagekit Media Library
         const uploadResponse = await imagekit.upload({
             file: base64Image,
-            fileName: `${DataTransfer.now()}.png`,
+            fileName: `${Date.now()}.png`,
             folder: "quickgpt"
         })
 
