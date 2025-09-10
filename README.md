@@ -46,9 +46,23 @@ npm install
 
 Create a .env file in the server folder with:
 
-MONGODB_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-OPENAI_API_KEY=your_openai_api_key
+JWT_SECRET = 'gs#secret'
+
+
+MONGODB_URI = mongodb+srv://amitjhastm2001_db_user:amit12345@cluster0.jtewbva.mongodb.net
+
+GEMINI_API_KEY = AIzaSyCnb-Xu9wrf1dWaVr_eUyFwF2VTr-6yzfE
+
+#ImageKit
+IMAGEKIT_PUBLIC_KEY ='public_7pTN3IJvVy49qGMvirtPPQ7z2V0='
+IMAGEKIT_PRIVATE_KEY = 'private_YdpE5U/gQvV0bX40d8VqTBV9iQo='
+IMAGEKIT_URL_ENDPOINT = 'https://ik.imagekit.io/yd0ypbonz'
+
+#Stripe
+STRIPE_PUBLISHABLE_KEY =pk_test_51RyvUj34zGbs0E6bQ0rujivB6DwnQj5Q8pVZasH3AcEfTRVEcdRHaL3zcfmlEDZdj7jusOpFRnbCfr8bmJSThxtB00xG59MPiJ
+STRIPE_SECRET_KEY = sk_test_51RyvUj34zGbs0E6bZwFRhphDzPqIlOPuSXfWNmZbkHe2TxJgX3irXkPmBujDtMNthmw7sNEPJFP6n1mVkdpOIdgG00QrIc7REK
+
+STRIPE_WEBHOOK_SECRET = whsec_9jqozSYFRYZyR1ov262JhmENcSepkp2W
 
 4️⃣ Run the app locally
 # Run backend
@@ -60,5 +74,5 @@ cd ../client
 npm run dev
 
 🌍 Live Demo
+https://quick-gpt-vert.vercel.app/
 
-🔗 QuickGPT on Vercel
