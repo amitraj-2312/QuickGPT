@@ -74,5 +74,7 @@ cd ../client
 npm run dev
 
 🌍 Live Demo
-https://quick-gpt-vert.vercel.app/
+🔗https://quick-gpt-vert.vercel.app
+
+
 
