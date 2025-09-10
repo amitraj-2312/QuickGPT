@@ -30,7 +30,7 @@ Deployment: Vercel (Frontend + Backend)
 
 🚀 Getting Started
 1️⃣ Clone the repository
-git clone https://github.com/your-username/quickgpt.git
+git clone https://github.com/amitraj-2312/quickgpt.git
 cd quickgpt
 
 2️⃣ Install dependencies
